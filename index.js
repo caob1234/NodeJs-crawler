@@ -32,4 +32,4 @@ const downLoadImages = async (list, index) => {
   }
 };
 main(basicPath + start);
-console.log("测试冲突")
+console.log("测试冲突")；
