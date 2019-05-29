@@ -1,7 +1,8 @@
 const rp = require("request-promise"), //进入request-promise模块
   fs = require("fs"), //进入fs模块
   cheerio = require("cheerio"), //进入cheerio模块
-  depositPath = "D:/blog/reptile/meizi/"; //存放照片的地址
+    path = require("path"),
+  depositPath = path.dirname(require.main.filename)+"/images/"; //存放照片的地址
 let downloadPath; //下载图片的文件夹地址
 module.exports = {
   async getPage(url) {
