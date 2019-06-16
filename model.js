@@ -1,3 +1,4 @@
+"use strict";
 const rp = require("request-promise"), //进入request-promise模块
   fs = require("fs"), //进入fs模块
   cheerio = require("cheerio"), //进入cheerio模块
