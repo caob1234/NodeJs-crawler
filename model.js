@@ -78,6 +78,6 @@ module.exports = {
       resolveWithFullResponse: true,
       headers
     }).pipe(fs.createWriteStream(depositPath+pin_id+'.png'));//下载
-    console.log(depositPath+pin_id+'.jpg下载成功');
+    console.log(depositPath+pin_id+'.png下载成功');
   }
 };
