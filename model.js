@@ -7,7 +7,7 @@ const rp = require("request-promise"), //进入request-promise模块
 module.exports = {
   async getPage(url) {
     let headers = {
-      Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+      Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,images/webp,images/apng,*/*;q=0.8",
       "Accept-Encoding": "gzip, deflate",
       "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
       "Cache-Control": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36",
@@ -62,7 +62,7 @@ module.exports = {
       authority: "hbimg.huabanimg.com",
       method: "GET",
       scheme: "https",
-      accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
+      accept: "text/html,application/xhtml+xml,application/xml;q=0.9,images/webp,images/apng,*/*;q=0.8,application/signed-exchange;v=b3",
       "accept-encoding": "gzip, deflate, br",
       "accept-language": "en",
       "cache-control": "no-cache",
