@@ -22,35 +22,18 @@ module.exports = {
       url,
       res: await rp({
         url: url
-        // resolveWithFullResponse: true,
       })
-          // .pipe(fs.createWriteStream(depositPath+"download-and-record-file.md"))
     };
     return data;
   },
   getUrl(data) {
     const $ = cheerio.load(data.res); //将html转换为可操作的节点
     let list = [],
-    // console.log($.html().toLocaleString().split('</script>')[1]);
     str = $.html().toLocaleString(),
     // firstStr = str.slice(str.indexOf('<script>'),str.indexOf('</script>')),
     pins = str.slice(str.indexOf('app.page["pins"] ='),str.indexOf('app.page["search_keyword"]')).trim();
     console.log("start each function---------------");
-    list = JSON.parse(pins.slice(18,pins.length-1)
-      //   if add revier function then return value would is undefined.
-        //   ,(any,key,value)=>{
-      // console.log("any is:"+any);
-      // console.log("key is:"+key);
-      // console.log("value is:"+value);
-      // if (any === "pin_id"){
-      //   Object.assign(obj,{pin_id:key})
-      // }
-      // if (any === "key"){
-      //   Object.assign(obj,{key:key});
-      // }
-      // list.push(obj);
-    // }
-    );
+    list = JSON.parse(pins.slice(18,pins.length-1));
 
     console.log("end each function---------------");
     return list;
@@ -77,7 +60,7 @@ module.exports = {
       url: imgSrc,
       resolveWithFullResponse: true,
       headers
-    }).pipe(fs.createWriteStream(depositPath+pin_id+'.png'));//下载
-    console.log(depositPath+pin_id+'.png下载成功');
+    }).pipe(fs.createWriteStream(depositPath+pin_id+'.png'))
+        .end(console.log(depositPath+pin_id+'.png下载成功'));//下载
   }
 };
