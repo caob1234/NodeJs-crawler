@@ -1,6 +1,7 @@
 const model = require("./model"),
     imgUrl = "https://hbimg.huabanimg.com/",
-  basicPath = "https://huaban.com/explore/shanshui";
+  // basicPath = "https://huaban.com/explore/shanshui?limit=40";
+  basicPath = "https://huaban.com/explore/xiaoqingxinmeinv?limit=50";
 let start = 2,
   end = 10;
 const main = async url => {

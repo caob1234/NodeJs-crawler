@@ -34,9 +34,9 @@ module.exports = {
     // console.log($.html().toLocaleString().split('</script>')[1]);
     str = $.html().toLocaleString(),
     // firstStr = str.slice(str.indexOf('<script>'),str.indexOf('</script>')),
-    pins = str.slice(str.indexOf('app.page["pins"] =')).trim();
+    pins = str.slice(str.indexOf('app.page["pins"] ='),str.indexOf('app.page["search_keyword"]')).trim();
     console.log("start each function---------------");
-    list = JSON.parse(pins.slice(18,pins.indexOf(";"))
+    list = JSON.parse(pins.slice(18,pins.length-1)
       //   if add revier function then return value would is undefined.
         //   ,(any,key,value)=>{
       // console.log("any is:"+any);
