@@ -2,3 +2,4 @@
 *node_modules/
 *.gitignore
 images
+package-lock.json
