@@ -6,21 +6,9 @@ const rp = require("request-promise"), //进入request-promise模块
   depositPath = path.dirname(require.main.filename)+"/images/"; //存放照片的地址
 module.exports = {
   async getPage(url) {
-    let headers = {
-      Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,images/webp,images/apng,*/*;q=0.8",
-      "Accept-Encoding": "gzip, deflate",
-      "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
-      "Cache-Control": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36",
-      Host: "huaban.com",
-      Pragma: "no-cache",
-      "Proxy-Connection": "keep-alive",
-      Referer: url,
-      "Upgrade-Insecure-Requests": 1,
-      "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36"
-    };
     const data = {
       url,
-      res: await rp({
+      res:await rp({
         url: url
       })
     };
@@ -40,8 +28,7 @@ module.exports = {
   },
   //下载相册照片
   async downloadImage(pin_id, imgSrc) {
-    let headers;
-    headers = {
+    let headers = {
       authority: "hbimg.huabanimg.com",
       method: "GET",
       scheme: "https",
@@ -61,6 +48,7 @@ module.exports = {
       resolveWithFullResponse: true,
       headers
     }).pipe(fs.createWriteStream(depositPath+pin_id+'.png'))
-        .end(console.log(depositPath+pin_id+'.png下载成功'));//下载
+        // .end(console.log(depositPath+pin_id+'.png下载成功'));//下载
+    return `${depositPath}+${pin_id}+'.png下载成功'`
   }
 };
