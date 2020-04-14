@@ -3,11 +3,13 @@ const rp = require("request-promise"), //进入request-promise模块
   fs = require("fs"), //进入fs模块
   cheerio = require("cheerio"), //进入cheerio模块
     path = require("path"),
+    Sleep = require("./Sleep"),
   depositPath = path.dirname(require.main.filename)+"/images/"; //存放照片的地址
 module.exports = {
   async getPage(url) {
     const data = {
       url,
+      //正常情况下，await命令后面是一个 Promise 对象，返回该对象的结果。如果不是 Promise 对象，就直接返回对应的值。
       res:await rp({
         url: url
       })
@@ -20,14 +22,14 @@ module.exports = {
     str = $.html().toLocaleString(),
     // firstStr = str.slice(str.indexOf('<script>'),str.indexOf('</script>')),
     pins = str.slice(str.indexOf('app.page["pins"] ='),str.indexOf('app.page["search_keyword"]')).trim();
-    console.log("start each function---------------");
     list = JSON.parse(pins.slice(18,pins.length-1));
-
-    console.log("end each function---------------");
     return list;
   },
   //下载相册照片
   async downloadImage(pin_id, imgSrc) {
+    // sleep方法在此处并没有起到想象中的作用
+    // let sleepTime=await new Sleep(10000);
+    // console.log("sleepTime:"+sleepTime);
     let headers = {
       authority: "hbimg.huabanimg.com",
       method: "GET",
@@ -48,7 +50,7 @@ module.exports = {
       resolveWithFullResponse: true,
       headers
     }).pipe(fs.createWriteStream(depositPath+pin_id+'.png'))
-        // .end(console.log(depositPath+pin_id+'.png下载成功'));//下载
-    return `${depositPath}+${pin_id}+'.png下载成功'`
+        .end(console.log(depositPath+pin_id+'.png下载成功'));//下载
+    return `${depositPath}${pin_id}.png下载成功-return`
   }
 };
