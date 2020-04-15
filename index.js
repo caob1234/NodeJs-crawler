@@ -1,13 +1,13 @@
 const model = require("./model"),
     imgUrl = "https://hbimg.huabanimg.com/",
   basicPath = "https://huaban.com/explore/shanshui?limit=40";
-const main = async url => {
-  let list = [];
-  const data = await model.getPage(url);
+let main = async url => {
+  let list = [],
+      data = await model.getPage(url);
   list = model.getUrl(data);
   downLoadImages(list);//下载
 };
-const downLoadImages = list => {
+let downLoadImages = list => {
   list.forEach((pin,index,array)=>{
     model.downloadImage(pin.pin_id, imgUrl + pin.file.key).then(r  =>{
       console.log(r);
