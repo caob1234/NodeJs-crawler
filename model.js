@@ -3,14 +3,14 @@ const rp = require("request-promise"), //进入request-promise模块
     fs = require("fs"), //进入fs模块
     cheerio = require("cheerio"), //进入cheerio模块
     path = require("path"),
-    Sleep = require("./Sleep"),
+    // Sleep = require("./Sleep"),
     retrieve = require("./retrieve"),
     depositPath = path.dirname(require.main.filename) + "/images/"; //存放照片的地址
 module.exports = {
     async getPage(url) {
         try {
             //正常情况下，await命令后面是一个 Promise 对象，返回该对象的结果。如果不是 Promise 对象，就直接返回对应的值。
-            return await retrieve.request(url,'');
+            return await retrieve.get(url);
         } catch (e) {
             console.log("request error:" + e);
         }
