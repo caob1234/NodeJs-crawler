@@ -3,7 +3,7 @@ const https = require('https');
 const iconv = require('iconv-lite');
 
 const headers = {
-    "X-Requested-With": "XMLHttpRequest",
+    "X-Requested-With": "XMLHttpRequest",//ajax请求会添加给request header
 };
 const options={
     headers:headers
