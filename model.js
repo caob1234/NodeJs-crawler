@@ -32,7 +32,7 @@ module.exports = {
             authority: "hbimg.huabanimg.com",
             method: "GET",
             scheme: "https",
-            accept: "text/html,application/xhtml+xml,application/xml;q=0.9,images/webp,images/apng,*/*;q=0.8,application/signed-exchange;v=b3",
+            accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
             "accept-encoding": "gzip, deflate, br",
             "accept-language": "en",
             "cache-control": "no-cache",
@@ -47,8 +47,7 @@ module.exports = {
             url: imgSrc,
             resolveWithFullResponse: true,
             headers
-        }).pipe(fs.createWriteStream(depositPath + pin_id + '.png'))
-            .end(console.log(depositPath + pin_id + '.png下载成功'));//下载
+        }).pipe(fs.createWriteStream(depositPath + pin_id + '.png'));//下载
         return `${depositPath}${pin_id}.png下载成功-return`
     }
 };
