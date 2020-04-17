@@ -4,6 +4,7 @@ const iconv = require('iconv-lite');
 
 const headers = {
     "X-Requested-With": "XMLHttpRequest",//ajax请求会添加给request header
+    "Accept-Encoding": "compress",//一种压缩算法
 };
 const options={
     headers:headers
